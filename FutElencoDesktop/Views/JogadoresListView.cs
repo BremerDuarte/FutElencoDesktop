@@ -18,6 +18,7 @@ namespace FutElencoDesktop
 		public JogadoresListView(int timeID = 0)
 		{
 			InitializeComponent();
+			FiltroComboBox.SelectedIndex = 0;
 
 			DB.Posicoes.Load();
 			DB.Times.Load();
@@ -106,9 +107,27 @@ namespace FutElencoDesktop
 
 		private void FiltrarButton_Click(object sender, EventArgs e)
 		{
-			var bindingListFiltered = jogadorBindingList.Where(j => j.NomeTime.ToUpper().Contains(FiltroTextBox.Text.ToUpper())).ToList();
-			dataGridViewJogadores.DataSource = bindingListFiltered;
-			dataGridViewJogadores.Refresh();
+			switch (FiltroComboBox.SelectedIndex)
+			{
+				case 0: //Nome
+					dataGridViewJogadores.DataSource = jogadorBindingList.Where(j => j.Nome.ToUpper().Contains(FiltroTextBox.Text.ToUpper())).ToList();
+					break;
+				case 1: //Apelido
+					dataGridViewJogadores.DataSource = jogadorBindingList.Where(j => j.Apelido.ToUpper().Contains(FiltroTextBox.Text.ToUpper())).ToList();
+					break;
+				case 2: //Posição
+					dataGridViewJogadores.DataSource = jogadorBindingList.Where(j => j.NomePosicao.ToUpper().Contains(FiltroTextBox.Text.ToUpper())).ToList();
+					break;
+				case 3: //Time
+					dataGridViewJogadores.DataSource = jogadorBindingList.Where(j => j.NomeTime.ToUpper().Contains(FiltroTextBox.Text.ToUpper())).ToList();
+					break;
+			}
+		}
+
+		private void LimparButton_Click(object sender, EventArgs e)
+		{
+			FiltroTextBox.Text = string.Empty;
+			this.dataGridViewJogadores.DataSource = this.jogadorBindingList;
 		}
 	}
 }

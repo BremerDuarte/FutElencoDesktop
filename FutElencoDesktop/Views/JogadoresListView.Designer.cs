@@ -42,6 +42,8 @@
 			this.RefreshButton = new System.Windows.Forms.Button();
 			this.FiltrarButton = new System.Windows.Forms.Button();
 			this.FiltroTextBox = new System.Windows.Forms.TextBox();
+			this.LimparButton = new System.Windows.Forms.Button();
+			this.FiltroComboBox = new System.Windows.Forms.ComboBox();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewJogadores)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -58,7 +60,7 @@
             this.ColumnTime,
             this.ColumnEditar,
             this.ColumnExcluir});
-			this.dataGridViewJogadores.Location = new System.Drawing.Point(12, 12);
+			this.dataGridViewJogadores.Location = new System.Drawing.Point(12, 41);
 			this.dataGridViewJogadores.Name = "dataGridViewJogadores";
 			this.dataGridViewJogadores.Size = new System.Drawing.Size(760, 397);
 			this.dataGridViewJogadores.TabIndex = 0;
@@ -125,7 +127,7 @@
 			// 
 			// CadastrarButton
 			// 
-			this.CadastrarButton.Location = new System.Drawing.Point(615, 424);
+			this.CadastrarButton.Location = new System.Drawing.Point(614, 444);
 			this.CadastrarButton.Name = "CadastrarButton";
 			this.CadastrarButton.Size = new System.Drawing.Size(75, 23);
 			this.CadastrarButton.TabIndex = 1;
@@ -135,7 +137,7 @@
 			// 
 			// SairButton
 			// 
-			this.SairButton.Location = new System.Drawing.Point(697, 424);
+			this.SairButton.Location = new System.Drawing.Point(696, 444);
 			this.SairButton.Name = "SairButton";
 			this.SairButton.Size = new System.Drawing.Size(75, 23);
 			this.SairButton.TabIndex = 2;
@@ -145,17 +147,17 @@
 			// 
 			// RefreshButton
 			// 
-			this.RefreshButton.Location = new System.Drawing.Point(437, 424);
+			this.RefreshButton.Location = new System.Drawing.Point(696, 12);
 			this.RefreshButton.Name = "RefreshButton";
 			this.RefreshButton.Size = new System.Drawing.Size(75, 23);
 			this.RefreshButton.TabIndex = 3;
-			this.RefreshButton.Text = "Refresh";
+			this.RefreshButton.Text = "Atualizar";
 			this.RefreshButton.UseVisualStyleBackColor = true;
 			this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
 			// 
 			// FiltrarButton
 			// 
-			this.FiltrarButton.Location = new System.Drawing.Point(217, 424);
+			this.FiltrarButton.Location = new System.Drawing.Point(344, 12);
 			this.FiltrarButton.Name = "FiltrarButton";
 			this.FiltrarButton.Size = new System.Drawing.Size(75, 23);
 			this.FiltrarButton.TabIndex = 4;
@@ -165,16 +167,42 @@
 			// 
 			// FiltroTextBox
 			// 
-			this.FiltroTextBox.Location = new System.Drawing.Point(43, 426);
+			this.FiltroTextBox.Location = new System.Drawing.Point(14, 12);
 			this.FiltroTextBox.Name = "FiltroTextBox";
 			this.FiltroTextBox.Size = new System.Drawing.Size(168, 20);
 			this.FiltroTextBox.TabIndex = 5;
+			// 
+			// LimparButton
+			// 
+			this.LimparButton.Location = new System.Drawing.Point(425, 12);
+			this.LimparButton.Name = "LimparButton";
+			this.LimparButton.Size = new System.Drawing.Size(75, 23);
+			this.LimparButton.TabIndex = 6;
+			this.LimparButton.Text = "Limpar";
+			this.LimparButton.UseVisualStyleBackColor = true;
+			this.LimparButton.Click += new System.EventHandler(this.LimparButton_Click);
+			// 
+			// FiltroComboBox
+			// 
+			this.FiltroComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.FiltroComboBox.FormattingEnabled = true;
+			this.FiltroComboBox.Items.AddRange(new object[] {
+            "Nome",
+            "Apelido",
+            "Posição",
+            "Time"});
+			this.FiltroComboBox.Location = new System.Drawing.Point(188, 12);
+			this.FiltroComboBox.Name = "FiltroComboBox";
+			this.FiltroComboBox.Size = new System.Drawing.Size(150, 21);
+			this.FiltroComboBox.TabIndex = 7;
 			// 
 			// JogadoresListView
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.ClientSize = new System.Drawing.Size(786, 473);
+			this.Controls.Add(this.FiltroComboBox);
+			this.Controls.Add(this.LimparButton);
 			this.Controls.Add(this.FiltroTextBox);
 			this.Controls.Add(this.FiltrarButton);
 			this.Controls.Add(this.RefreshButton);
@@ -206,6 +234,8 @@
 		private System.Windows.Forms.DataGridViewButtonColumn ColumnExcluir;
 		private System.Windows.Forms.Button FiltrarButton;
 		private System.Windows.Forms.TextBox FiltroTextBox;
+		private System.Windows.Forms.Button LimparButton;
+		private System.Windows.Forms.ComboBox FiltroComboBox;
 	}
 }
 

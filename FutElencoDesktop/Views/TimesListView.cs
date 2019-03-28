@@ -1,13 +1,9 @@
 ﻿using FutElencoDesktop.DAL;
+using FutElencoDesktop.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FutElencoDesktop.Views
@@ -67,16 +63,19 @@ namespace FutElencoDesktop.Views
 						if (dialogResult == DialogResult.Yes)
 						{
 							var time = DB.Times.Single(t => t.ID.ToString() == timeID);
-
-							DB.Jogadores.Load();
+							
 							var timeEmUso = DB.Jogadores.Any(j => j.Time.ID == time.ID);
-
 							if (timeEmUso)
 							{
 								MessageBox.Show(String.Format("Não é possível excluir o time {0} porque existem jogadores associados a ele.", nomeTime));
 							}
 							else
-							{
+							{ 
+								var jogadoresApagados = DB.Jogadores.Where(j => j.TimeID == time.ID).ToList();
+								foreach (var j in jogadoresApagados)
+								{
+									DB.Entry<Jogador>(j).State = EntityState.Deleted; //Necessário atualizar pois o instância DB atual não enxerga a alteração na instância do JogadoresListView
+								}
 								DB.Times.Remove(time);
 								DB.SaveChanges();
 								PerformRefresh();

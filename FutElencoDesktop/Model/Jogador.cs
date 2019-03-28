@@ -7,18 +7,20 @@ namespace FutElencoDesktop.Model
 	public class Jogador
 	{
 		public int ID { get; set; }
+		public int PosicaoID { get; set; }
+		public int TimeID { get; set; }
 		public string Nome { get; set; }
 		public string Apelido { get; set; }
 		public DateTime DataNascimento { get; set; }
-		public Posicao Posicao { get; set; }
-		public Time Time { get; set; }
+		public virtual Posicao Posicao { get; set; }
+		public virtual Time Time { get; set; }
 
-		public string NomePosicao
+		public virtual string NomePosicao
 		{
 			get { return Posicao == null ? string.Empty : Posicao.Nome; }
 		}
 
-		public string NomeTime
+		public virtual string NomeTime
 		{
 			get { return Time == null ? string.Empty : Time.Nome; }
 		}

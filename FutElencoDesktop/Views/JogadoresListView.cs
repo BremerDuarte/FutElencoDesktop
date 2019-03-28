@@ -20,8 +20,6 @@ namespace FutElencoDesktop
 			InitializeComponent();
 			FiltroComboBox.SelectedIndex = 0;
 
-			DB.Posicoes.Load();
-			DB.Times.Load();
 			DB.Jogadores.Load();
 			dataGridViewJogadores.AutoGenerateColumns = false;
 
@@ -65,6 +63,7 @@ namespace FutElencoDesktop
 							var jogador = DB.Jogadores.Single(j => j.ID.ToString() == jogadorID);
 							DB.Jogadores.Remove(jogador);
 							DB.SaveChanges();
+
 							PerformRefresh();
 						}
 					}
